@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แดชบอร์ดสูตรเด็ด: กุ้งอบวุ้นเส้นภัตตาคาร</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Culinary Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#C83E2B',
+                            redhover: '#B23321',
+                            gold: '#E6A117',
+                            dark: '#1E1B18',
+                            surface: '#26221E',
+                            card: '#2F2A25',
+                            cream: '#FAF6F0',
+                            accent: '#F472B6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #141210;
+            color: #FAF6F0;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #26221E;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E6A117;
+            border-radius: 3px;
+        }
+
+        .gradient-overlay {
+            background: linear-gradient(180deg, rgba(20,18,16,0.3) 0%, rgba(20,18,16,0.95) 100%);
+        }
+
+        .checkbox-custom:checked + label {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        
+        .glow-red {
+            box-shadow: 0 0 20px rgba(200, 62, 43, 0.35);
+        }
+        .glow-gold {
+            box-shadow: 0 0 15px rgba(230, 161, 23, 0.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between custom-scrollbar">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-brand-surface border-b border-stone-800 sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center text-white text-xl font-bold shadow-lg glow-red">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold text-white leading-tight">แดชบอร์ดสูตรเด็ด: กุ้งอบวุ้นเส้นภัตตาคาร</h1>
+                    <p class="text-xs text-stone-400">สูตรมาตรฐานภัตตาคาร วุ้นเส้นเหนียวนุ่ม กุ้งเด้งฉ่ำซอส</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-4 text-xs font-medium text-stone-300">
+                <span class="flex items-center gap-1.5 bg-stone-800/80 px-3 py-1.5 rounded-full border border-stone-700">
+                    <i class="fa-solid fa-signal text-brand-gold"></i> ระดับ: ปานกลาง
+                </span>
+                <span class="flex items-center gap-1.5 bg-stone-800/80 px-3 py-1.5 rounded-full border border-stone-700">
+                    <i class="fa-solid fa-clock text-brand-red"></i> เวลา: 20-25 นาที
+                </span>
+                <span class="flex items-center gap-1.5 bg-stone-800/80 px-3 py-1.5 rounded-full border border-stone-700">
+                    <i class="fa-solid fa-fire text-orange-500"></i> หม้ออบดินเผา / กระทะหนา
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full space-y-8">
+
+        <!-- HERO BANNER & PORTION CALCULATOR CONTROL -->
+        <section class="relative rounded-3xl overflow-hidden border border-stone-800 bg-brand-card shadow-2xl">
+            <!-- Background Visual Artwork (SVG & CSS Art representation) -->
+            <div class="absolute inset-0 z-0 opacity-25">
+                <svg width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#C83E2B;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#1E1B18;stop-opacity:1" />
+                        </linearGradient>
+                        <radialGradient id="grad2" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#E6A117;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#141210;stop-opacity:0" />
+                        </radialGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grad1)" />
+                    <circle cx="650" cy="200" r="220" fill="url(#grad2)" />
+                    <!-- Clay Pot Illustration Graphic -->
+                    <circle cx="650" cy="200" r="160" fill="#1E1B18" stroke="#E6A117" stroke-width="4" />
+                    <circle cx="650" cy="200" r="130" fill="#29231D" />
+                    <!-- Prawn vector accents -->
+                    <path d="M 600,180 Q 640,130 690,160 Q 710,190 660,210 Z" fill="#C83E2B" opacity="0.8"/>
+                    <path d="M 620,230 Q 670,200 710,240 Q 690,270 640,250 Z" fill="#C83E2B" opacity="0.8"/>
+                </svg>
+            </div>
+
+            <div class="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 gradient-overlay">
+                <div class="space-y-3 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/20 border border-brand-red/40 text-brand-red text-xs font-semibold">
+                        <i class="fa-solid fa-crown"></i> สูตรภัตตาคารยอดนิยม
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                        กุ้งอบวุ้นเส้น <span class="text-brand-gold">สูตรซอสเข้มข้น</span>
+                    </h2>
+                    <p class="text-stone-300 text-sm sm:text-base leading-relaxed">
+                        เคล็ดลับวุ้นเส้นเหนียวนุ่มอมซอส ไม่เละไม่ติดหม้อ พร้อมกุ้งเนื้อเด้งหวานฉ่ำ หอมกลิ่นพริกไทยดำ ขิงแก่ และน้ำมันงาแบบจัดเต็ม
+                    </p>
+                </div>
+
+                <!-- Interactive Portion Calculator -->
+                <div class="w-full md:w-auto bg-stone-900/90 border border-stone-700/80 rounded-2xl p-4 backdrop-blur-md space-y-3 min-w-[280px]">
+                    <div class="flex items-center justify-between text-xs font-medium text-stone-300">
+                        <span><i class="fa-solid fa-users text-brand-gold mr-1"></i> ปรับสัดส่วนการเสิร์ฟ:</span>
+                        <span id="portionLabel" class="text-brand-gold font-bold text-sm">2-3 ท่าน (1x)</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setMultiplier(1)" id="btn-mult-1" class="mult-btn active py-2 rounded-xl border border-brand-gold bg-brand-gold text-stone-950 font-bold text-sm transition-all shadow">
+                            1x (2-3 คน)
+                        </button>
+                        <button onclick="setMultiplier(2)" id="btn-mult-2" class="mult-btn py-2 rounded-xl border border-stone-700 bg-stone-800 text-stone-300 hover:border-stone-500 font-bold text-sm transition-all">
+                            2x (4-6 คน)
+                        </button>
+                        <button onclick="setMultiplier(3)" id="btn-mult-3" class="mult-btn py-2 rounded-xl border border-stone-700 bg-stone-800 text-stone-300 hover:border-stone-500 font-bold text-sm transition-all">
+                            3x (7-9 คน)
+                        </button>
+                    </div>
+                    <p class="text-[11px] text-stone-400 text-center italic">ปริมาณวัตถุดิบและซอสจะคำนวณให้อัตโนมัติ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INGREDIENT & SAUCE CALCULATOR GRID -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-brand-gold"></i> คำนวณวัตถุดิบ & เตรียมของ (Mise en Place)
+                </h3>
+                <button onclick="resetCheckboxes()" class="text-xs text-stone-400 hover:text-brand-gold transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-rotate-right"></i> รีเซ็ตติ๊กถูก
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 1. วัตถุดิบหลัก -->
+                <div class="bg-brand-card rounded-2xl p-5 border border-stone-800 flex flex-col justify-between space-y-4 shadow-lg hover:border-stone-700 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-stone-800 mb-4">
+                            <span class="font-bold text-white flex items-center gap-2 text-base">
+                                <i class="fa-solid fa-shrimp text-brand-red"></i> 1. วัตถุดิบหลัก
+                            </span>
+                            <span class="text-xs bg-stone-800 text-stone-400 px-2.5 py-1 rounded-md">Main</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-stone-300">
+                            <li class="flex items-start gap-3">
+                                <input type="checkbox" id="ing-1" class="checkbox-custom mt-1 accent-brand-red w-4 h-4 cursor-pointer">
+                                <label for="ing-1" class="cursor-pointer select-none">
+                                    <strong class="text-white">กุ้งแม่น้ำ / แชบ๊วยใหญ่:</strong> 
+                                    <span class="text-brand-gold font-semibold" data-base="6" data-unit="ตัว">6 ตัว</span>
+                                    <span class="block text-xs text-stone-400 mt-0.5">(แกะเปลือกผ่าหลังถอดเส้นดำ ออก หรือแช่น้ำโซดาเย็นจัดไว้ 5 นาที)</span>
+                                </label>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <input type="checkbox" id="ing-2" class="checkbox-custom mt-1 accent-brand-red w-4 h-4 cursor-pointer">
+                                <label for="ing-2" class="cursor-pointer select-none">
+                                    <strong class="text-white">วุ้นเส้นอบแห้ง:</strong> 
+                                    <span class="text-brand-gold font-semibold" data-base="100" data-unit="กรัม">100 กรัม</span>
+                                    <span class="block text-xs text-stone-400 mt-0.5">(แช่น้ำจนนุ่มประมาณ 10–15 นาที แล้วตัดเส้นยาวพอดี)</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-stone-900/60 rounded-xl border border-stone-800/80 text-xs text-stone-400 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-brand-gold"></i>
+                        <span>เคล็ดลับ: แช่กุ้งในน้ำโซดาเย็นจัด ช่วยให้เนื้อเด้งสู้ฟัน</span>
+                    </div>
+                </div>
+
+                <!-- 2. เครื่องผัดรองก้นหม้อ -->
+                <div class="bg-brand-card rounded-2xl p-5 border border-stone-800 flex flex-col justify-between space-y-4 shadow-lg hover:border-stone-700 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-stone-800 mb-4">
+                            <span class="font-bold text-white flex items-center gap-2 text-base">
+                                <i class="fa-solid fa-pepper-hot text-amber-500"></i> 2. เครื่องรองก้นหม้อ
+                            </span>
+                            <span class="text-xs bg-stone-800 text-stone-400 px-2.5 py-1 rounded-md">Aromatics</span>
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-stone-300">
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-2">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="base-1" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="base-1" class="cursor-pointer select-none">มันหมูแข็ง / เบคอน</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="60" data-unit="กรัม">60 กรัม</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-2">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="base-2" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="base-2" class="cursor-pointer select-none">กระเทียมจีน (ทุบพอแตก)</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="5" data-unit="กลีบ">5 กลีบ</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-2">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="base-3" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="base-3" class="cursor-pointer select-none">รากผักชี (ทุบพอแตก)</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="4" data-unit="ราก">4 ราก</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-2">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="base-4" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="base-4" class="cursor-pointer select-none">ขิงแก่ (หั่นแว่นหนา)</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="5" data-unit="แว่น">5 แว่น</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-2">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="base-5" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="base-5" class="cursor-pointer select-none">พริกไทยดำเม็ด (บุบพอแตก)</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="1" data-unit="ช้อนโต๊ะ">1 ช้อนโต๊ะ</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="base-6" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="base-6" class="cursor-pointer select-none">ต้นขึ้นฉ่าย (หั่นท่อน)</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="3" data-unit="ต้น">3 ต้น</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-stone-900/60 rounded-xl border border-stone-800/80 text-xs text-stone-400 flex items-center gap-2">
+                        <i class="fa-solid fa-fire-flame-curved text-orange-400"></i>
+                        <span>มันหมูและสมุนไพรช่วยป้องกันไม่ให้เส้นติดก้นหม้อไหม้</span>
+                    </div>
+                </div>
+
+                <!-- 3. ซอสหมักหัวใจสำคัญ -->
+                <div class="bg-brand-card rounded-2xl p-5 border border-brand-red/30 flex flex-col justify-between space-y-4 shadow-lg glow-red relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-red/10 rounded-full blur-xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-stone-800 mb-4">
+                            <span class="font-bold text-white flex items-center gap-2 text-base">
+                                <i class="fa-solid fa-flask text-brand-red"></i> 3. ซอสหมักหัวใจสำคัญ
+                            </span>
+                            <span class="text-xs bg-brand-red/20 text-brand-red border border-brand-red/40 px-2.5 py-1 rounded-md font-semibold">Secret Sauce</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-stone-300">
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-1.5">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="sauce-1" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="sauce-1" class="cursor-pointer select-none">ซอสหอยนางรม</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="2" data-unit="ช้อนโต๊ะ">2 ช้อนโต๊ะ</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-1.5">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="sauce-2" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="sauce-2" class="cursor-pointer select-none">ซอสปรุงรสฝาเขียว</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="1" data-unit="ช้อนโต๊ะ">1 ช้อนโต๊ะ</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-1.5">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="sauce-3" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="sauce-3" class="cursor-pointer select-none">ซีอิ๊วขาว</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="1" data-unit="ช้อนโต๊ะ">1 ช้อนโต๊ะ</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-1.5">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="sauce-4" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="sauce-4" class="cursor-pointer select-none">ซีอิ๊วดำหวาน (แต่งสี)</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="0.5" data-unit="ช้อนชา">0.5 ช้อนชา</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-1.5">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="sauce-5" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="sauce-5" class="cursor-pointer select-none">น้ำตาลทราย</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="0.5" data-unit="ช้อนโต๊ะ">0.5 ช้อนโต๊ะ</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-stone-800/50 pb-1.5">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="sauce-6" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="sauce-6" class="cursor-pointer select-none">น้ำมันงา</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="1" data-unit="ช้อนโต๊ะ">1 ช้อนโต๊ะ</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" id="sauce-7" class="checkbox-custom accent-brand-red w-4 h-4 cursor-pointer">
+                                    <label for="sauce-7" class="cursor-pointer select-none">น้ำซุปไก่ / กระดูกหมู</label>
+                                </div>
+                                <span class="text-brand-gold font-semibold" data-base="110" data-unit="มล.">110 มล.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-stone-900/80 rounded-xl border border-brand-gold/30 text-xs text-stone-300 flex items-center gap-2">
+                        <i class="fa-solid fa-star text-brand-gold"></i>
+                        <span>แบ่งน้ำซอสเป็น 2 ส่วน: 2/3 หมักวุ้นเส้น, 1/3 ราดบนตัวกุ้ง</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP BY STEP COOKING TIMELINE & BUILT-IN TIMER -->
+        <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-brand-gold"></i> ขั้นตอนการทำอย่างละเอียด (Cooking Flow)
+                    </h3>
+                    <p class="text-xs text-stone-400">คลิกแต่ละขั้นตอนเพื่อดูรายละเอียดการทำทีละสเต็ป</p>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="flex bg-stone-900 p-1 rounded-xl border border-stone-800 overflow-x-auto custom-scrollbar">
+                    <button onclick="switchStep(1)" id="tab-step-1" class="step-tab text-xs px-3.5 py-2 rounded-lg font-medium transition-all text-white bg-brand-red shadow">
+                        1. ผสมซอส & หมักเส้น
+                    </button>
+                    <button onclick="switchStep(2)" id="tab-step-2" class="step-tab text-xs px-3.5 py-2 rounded-lg font-medium transition-all text-stone-400 hover:text-white">
+                        2. จัดรองก้นหม้อ
+                    </button>
+                    <button onclick="switchStep(3)" id="tab-step-3" class="step-tab text-xs px-3.5 py-2 rounded-lg font-medium transition-all text-stone-400 hover:text-white">
+                        3. เรียงวุ้นเส้น & กุ้ง
+                    </button>
+                    <button onclick="switchStep(4)" id="tab-step-4" class="step-tab text-xs px-3.5 py-2 rounded-lg font-medium transition-all text-stone-400 hover:text-white">
+                        4. อบด้วยไฟเป๊ะ
+                    </button>
+                    <button onclick="switchStep(5)" id="tab-step-5" class="step-tab text-xs px-3.5 py-2 rounded-lg font-medium transition-all text-stone-400 hover:text-white">
+                        5. โรยผัก & จัดเสิร์ฟ
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP CONTENT CARDS -->
+            <div class="bg-brand-card border border-stone-800 rounded-3xl p-6 sm:p-8 relative min-h-[340px] flex flex-col justify-between shadow-2xl">
+                
+                <!-- STEP 1 -->
+                <div id="content-step-1" class="step-content space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-2xl bg-brand-red/20 text-brand-red border border-brand-red/40 font-bold text-lg flex items-center justify-center">1</span>
+                        <div>
+                            <h4 class="text-xl font-bold text-white">ขั้นตอนที่ 1: ผสมซอสหมักและคลุกเคล้าวุ้นเส้น</h4>
+                            <p class="text-xs text-stone-400">การเตรียมหัวใจสำคัญของรสชาติ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-300 text-sm leading-relaxed">
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-bowl-rice"></i> วิธีปรุงน้ำซอสหมัก
+                            </h5>
+                            <p>นำซอสหอยนางรม, ซอสปรุงรสฝาเขียว, ซีอิ๊วขาว, ซีอิ๊วดำหวาน, น้ำตาลทราย, น้ำมันงา และน้ำซุปไก่ ใส่ลงในชามผสม คนให้เข้ากันจนน้ำตาลทรายละลายหมด</p>
+                        </div>
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-hand-holding-droplet"></i> การหมักวุ้นเส้น
+                            </h5>
+                            <p>แบ่งน้ำซอสออกเป็น <strong>2 ส่วน</strong> (อัตราส่วนประมาณ 2:1)</p>
+                            <ul class="list-disc list-inside space-y-1 text-xs text-stone-400">
+                                <li class="text-stone-300">นำวุ้นเส้นที่แช่น้ำนุ่มแล้ว คลุกกับซอสส่วนแรก (2/3) ให้ทั่ว หมักไว้ 5–10 นาที</li>
+                                <li>ซอสส่วนที่เหลือ (1/3) เก็บไว้ราดบนตัวกุ้งก่อนทำการอบ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="content-step-2" class="step-content hidden space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-2xl bg-brand-gold/20 text-brand-gold border border-brand-gold/40 font-bold text-lg flex items-center justify-center">2</span>
+                        <div>
+                            <h4 class="text-xl font-bold text-white">ขั้นตอนที่ 2: เตรียมเครื่องรองก้นหม้อ (กันติดหม้อ & เพิ่มหอม)</h4>
+                            <p class="text-xs text-stone-400">เกราะป้องกันไหม้และสร้างมิติความหอม</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-300 text-sm leading-relaxed">
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group"></i> การวางฐานมันหมู / เบคอน
+                            </h5>
+                            <p>เรียง <strong>มันหมูแข็ง หรือ เบคอน</strong> ลงที่ก้นหม้อดินเผาหรือกระทะหนาเป็นชั้นแรกสุด มันหมูจะเจียวน้ำมันออกมาระหว่างอบ ช่วยให้ก้นหม้อไม่ไหม้และมีกลิ่นหอมเจียว</p>
+                        </div>
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-mortar-pestle"></i> จัดวางเครื่องสมุนไพร
+                            </h5>
+                            <p>โรยทับมันหมูด้วย <strong>ขิงแก่แว่น, รากผักชีทุบ, กระเทียมทุบ, พริกไทยดำบุบ</strong> และพริกหอม (ฮวาเจียว) ให้ทั่วก้นหม้อ เครื่องเหล่านี้จะคอยส่งไอร้อนและความหอมทะลุขึ้นมายังวุ้นเส้น</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div id="content-step-3" class="step-content hidden space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-2xl bg-orange-500/20 text-orange-400 border border-orange-500/40 font-bold text-lg flex items-center justify-center">3</span>
+                        <div>
+                            <h4 class="text-xl font-bold text-white">ขั้นตอนที่ 3: จัดเรียงวุ้นเส้นและกุ้ง</h4>
+                            <p class="text-xs text-stone-400">เทคนิคการเลเยอร์เพื่อให้กุ้งไม่ Overcooked</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-300 text-sm leading-relaxed">
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-align-center"></i> ใส่เส้นวุ้นเส้น
+                            </h5>
+                            <p>นำวุ้นเส้นที่หมักซอสงวดเรียบร้อยแล้ว ใส่เททับลงบนเครื่องสมุนไพรก้นหม้อ จัดเกลี่ยเส้นให้กระจายตัวสม่ำเสมอ ไม่กระจุกเป็นก้อน</p>
+                        </div>
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-shrimp"></i> เรียงกุ้งและราดซอสที่เหลือ
+                            </h5>
+                            <p>เรียง <strong>กุ้งแม่น้ำ / กุ้งแชบ๊วย</strong> ไว้บนวุ้นเส้นชั้นบนสุดอย่างสวยงาม จากนั้นนำ <strong>น้ำซอสหมักส่วนที่เหลืออีก 1/3</strong> ราดลงบนตัวกุ้งให้ทั่วถึง</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div id="content-step-4" class="step-content hidden space-y-6">
+                    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                        <div class="flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-2xl bg-red-500/20 text-red-400 border border-red-500/40 font-bold text-lg flex items-center justify-center">4</span>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">ขั้นตอนที่ 4: การอบด้วยการคุมไฟเป๊ะ (8-10 นาที)</h4>
+                                <p class="text-xs text-stone-400">อบช่วงไฟปานกลางค่อนแรง และพลิกเส้น</p>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Baking Timer Widget -->
+                        <div class="w-full lg:w-auto bg-stone-900 border border-stone-700/80 p-4 rounded-2xl flex items-center justify-between gap-6 shadow-inner">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-stopwatch text-2xl text-brand-gold animate-pulse"></i>
+                                <div>
+                                    <div class="text-[10px] uppercase tracking-wider text-stone-400 font-bold">นาฬิกาจับเวลาอบกุ้ง</div>
+                                    <div id="timerDisplay" class="text-2xl font-black text-white tracking-widest font-mono">08:00</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="toggleTimer()" id="timerBtn" class="px-4 py-2 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-bold text-xs transition-all shadow glow-red">
+                                    <i class="fa-solid fa-play mr-1"></i> เริ่มจับเวลา
+                                </button>
+                                <button onclick="resetTimer()" class="p-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs transition-all border border-stone-700">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-300 text-sm leading-relaxed">
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-fire"></i> เฟสที่ 1: อบไฟกลาง-แรง (4-5 นาที)
+                            </h5>
+                            <p>ปิดฝาหม้อ ตั้งไฟปานกลางค่อนข้างแรง จนกระทั่งเริ่มได้ยินเสียงมันหมูก้นหม้อเสียงซู่ซ่าเจียวหอม และเริ่มมีควันระอุขึ้นมา</p>
+                        </div>
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-arrows-up-down"></i> เฟสที่ 2: พลิกเส้น & อบไฟอ่อน (3-4 นาที)
+                            </h5>
+                            <p>เปิดฝา ใช้ตะเกียบตลบพลิกวุ้นเส้นด้านล่างขึ้นมาด้านบนเพื่อให้ซอสกระจายตัวทั่ว วางกุ้งกลับไว้ชั้นบน ปิดฝาเบาไฟเป็น <strong>ไฟอ่อน</strong> อบต่ออีก 3-4 นาทีจนกุ้งสุกสีส้มพอดี</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 5 -->
+                <div id="content-step-5" class="step-content hidden space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold text-lg flex items-center justify-center">5</span>
+                        <div>
+                            <h4 class="text-xl font-bold text-white">ขั้นตอนที่ 5: แต่งกลิ่นขึ้นฉ่าย และจัดเสิร์ฟ</h4>
+                            <p class="text-xs text-stone-400">ปิดท้ายความหอมสมบูรณ์แบบก่อนขึ้นโต๊ะ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-300 text-sm leading-relaxed">
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-leaf"></i> โรยต้นขึ้นฉ่ายสลดความร้อน
+                            </h5>
+                            <p>เมื่อกุ้งสุกสีส้มเด้งฉ่ำแล้ว ให้โรย <strong>ต้นขึ้นฉ่ายหั่นท่อน</strong> ลงไปบนหน้ากุ้ง ปิดฝาหม้อ อบต่อเพียง <strong>30 วินาที</strong> ให้ผักพอสลดและปลดปล่อยกลิ่นหอมอโรม่า</p>
+                        </div>
+                        <div class="bg-stone-900/60 p-5 rounded-2xl border border-stone-800/80 space-y-3">
+                            <h5 class="font-semibold text-brand-gold flex items-center gap-2">
+                                <i class="fa-solid fa-utensils"></i> ยกลงจัดเสิร์ฟพร้อมทาน
+                            </h5>
+                            <p>ยกลงจากเตาเสิร์ฟทั้งหม้อดินเผาร้อนๆ ควันฉุย ทานคู่กับ <strong>น้ำจิ้มซีฟู้ดรสแซ่บ</strong> ตัดรสชาติเข้มข้นกลมกล่อมเข้ากันได้ดีที่สุด</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls Bottom -->
+                <div class="flex items-center justify-between pt-6 border-t border-stone-800 mt-6">
+                    <button id="prevBtn" onclick="prevStep()" class="px-4 py-2 rounded-xl bg-stone-800 text-stone-400 hover:text-white hover:bg-stone-700 text-xs font-semibold transition-all flex items-center gap-2 invisible">
+                        <i class="fa-solid fa-chevron-left"></i> ขั้นตอนก่อนหน้า
+                    </button>
+                    <span id="stepCounter" class="text-xs text-stone-400 font-medium">ขั้นตอน 1 จาก 5</span>
+                    <button id="nextBtn" onclick="nextStep()" class="px-4 py-2 rounded-xl bg-brand-gold hover:bg-amber-500 text-stone-950 font-bold text-xs transition-all flex items-center gap-2 shadow">
+                        ขั้นตอนถัดไป <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CHEF'S SECRETS & TIPS CARDS -->
+        <section class="space-y-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-lightbulb text-brand-gold"></i> เคล็ดลับระดับเชฟภัตตาคาร (3 Golden Rules)
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tip 1 -->
+                <div class="bg-gradient-to-br from-stone-900 to-brand-card p-6 rounded-2xl border border-stone-800 space-y-3 relative overflow-hidden group hover:border-brand-gold/50 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-base">1. อัตราส่วนน้ำซอสพอดีเป๊ะ</h4>
+                    <p class="text-xs text-stone-300 leading-relaxed">
+                        หากใส่น้ำซุปรวมซอสน้อยเกินไป วุ้นเส้นจะกระด้างแข็ง แต่หากใส่น้ำมากเกินไป เส้นจะเละเหนียวหนืด ปริมาณน้ำซุป 110 มล. ต่อวุ้นเส้นอบแห้ง 100 กรัม คือสัดส่วนที่สมบูรณ์แบบที่สุด
+                    </p>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="bg-gradient-to-br from-stone-900 to-brand-card p-6 rounded-2xl border border-stone-800 space-y-3 relative overflow-hidden group hover:border-brand-gold/50 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-base">2. พริกไทยดำบุบ & น้ำมันงา</h4>
+                    <p class="text-xs text-stone-300 leading-relaxed">
+                        การใช้พริกไทยดำเม็ดนำมาบุบใหม่ๆ รองก้นหม้อ รวมกับการใส่น้ำมันงาในซอสหมัก จะช่วยสร้างกลิ่นหอมอโรม่าแบบภัตตาคารจีนแท้ๆ และทำให้เส้นเงางามไม่ติดกัน
+                    </p>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="bg-gradient-to-br from-stone-900 to-brand-card p-6 rounded-2xl border border-stone-800 space-y-3 relative overflow-hidden group hover:border-brand-gold/50 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-shrimp"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-base">3. เทคนิคกุ้งเด้ง ไม่แห้งแข็ง</h4>
+                    <p class="text-xs text-stone-300 leading-relaxed">
+                        วางกุ้งไว้ด้านบนสุดของวุ้นเส้นเสมอ อย่าเอาลงไปรองก้นหม้อ เพราะความร้อนที่สูงเกินไปจะทำให้เนื้อกุ้งหดแห้งแข็ง (Overcooked) ไอร้อนจากการอบปิดฝาจะทำให้กุ้งสุกพอดีเนื้อเด้งหวาน
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BONUS SECTION: INTERACTIVE SEAFOOD SAUCE RECIPE -->
+        <section class="bg-gradient-to-r from-stone-900 via-brand-card to-stone-900 rounded-3xl p-6 sm:p-8 border border-emerald-900/40 shadow-2xl relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="space-y-2 max-w-xl">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+                        <i class="fa-solid fa-pepper-hot"></i> Bonus Recipe
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">สูตรน้ำจิ้มซีฟู้ดรสเด็ด (ทานคู่กุ้งอบวุ้นเส้น)</h3>
+                    <p class="text-xs text-stone-300 leading-relaxed">
+                        น้ำจิ้มซีฟู้ดรสแซ่บตัดความเข้มข้นมันนัวของกุ้งอบวุ้นเส้นได้อย่างลงตัว ปั่นหรือโขลกสดๆ ใหม่ๆ
+                    </p>
+                </div>
+
+                <!-- Quick Recipe Checklist -->
+                <div class="w-full md:w-auto bg-stone-950/80 p-5 rounded-2xl border border-stone-800 space-y-3 min-w-[300px]">
+                    <div class="text-xs font-bold text-emerald-400 flex items-center gap-2 pb-2 border-b border-stone-800">
+                        <i class="fa-solid fa-blender"></i> ส่วนผสมน้ำจิ้มซีฟู้ด (แซ่บครบรส)
+                    </div>
+                    <ul class="space-y-2 text-xs text-stone-300">
+                        <li class="flex justify-between">
+                            <span>พริกขี้หนูสวน (เขียว-แดง)</span>
+                            <span class="font-bold text-white">15-20 เม็ด</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>กระเทียมไทยแกะเปลือก</span>
+                            <span class="font-bold text-white">10 กลีบ</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>รากผักชี</span>
+                            <span class="font-bold text-white">2 ราก</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>น้ำมะนาวแท้คั้นสด</span>
+                            <span class="font-bold text-white">3 ช้อนโต๊ะ</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>น้ำปลาแท้อย่างดี</span>
+                            <span class="font-bold text-white">2.5 ช้อนโต๊ะ</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>น้ำตาลปี๊บ / น้ำตาลมะพร้าว</span>
+                            <span class="font-bold text-white">1 ช้อนโต๊ะ</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-surface border-t border-stone-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-stone-500 space-y-2">
+            <p>แดชบอร์ดสูตรอาหารกุ้งอบวุ้นเส้นภัตตาคาร &copy; 2026 Interactive Visual Culinary Guide</p>
+            <p class="text-[11px]">ออกแบบด้วยความพิถีพิถันเพื่อรสชาติที่สมบูรณ์แบบทุกครั้งที่ทำ</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // --- PORTION CALCULATOR STATE ---
+        let currentMultiplier = 1;
+
+        function setMultiplier(mult) {
+            currentMultiplier = mult;
+            
+            // Update button UI states
+            document.querySelectorAll('.mult-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-stone-950', 'border-brand-gold', 'shadow');
+                btn.classList.add('bg-stone-800', 'text-stone-300', 'border-stone-700');
+            });
+            const activeBtn = document.getElementById(`btn-mult-${mult}`);
+            activeBtn.classList.remove('bg-stone-800', 'text-stone-300', 'border-stone-700');
+            activeBtn.classList.add('bg-brand-gold', 'text-stone-950', 'border-brand-gold', 'shadow');
+
+            // Update portion label
+            const labels = { 1: '2-3 ท่าน (1x)', 2: '4-6 ท่าน (2x)', 3: '7-9 ท่าน (3x)' };
+            document.getElementById('portionLabel').textContent = labels[mult];
+
+            // Recalculate all ingredients with data-base attribute
+            document.querySelectorAll('[data-base]').forEach(el => {
+                const baseVal = parseFloat(el.getAttribute('data-base'));
+                const unit = el.getAttribute('data-unit');
+                const newVal = baseVal * mult;
+                
+                // Format nicely (remove unnecessary decimals)
+                const formattedVal = Number.isInteger(newVal) ? newVal : newVal.toFixed(1);
+                el.textContent = `${formattedVal} ${unit}`;
+            });
+        }
+
+        function resetCheckboxes() {
+            document.querySelectorAll('.checkbox-custom').forEach(cb => cb.checked = false);
+        }
+
+        // --- STEP-BY-STEP TAB SYSTEM ---
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function switchStep(stepNum) {
+            currentStep = stepNum;
+            
+            // Update tab buttons
+            document.querySelectorAll('.step-tab').forEach((tab, index) => {
+                if (index + 1 === stepNum) {
+                    tab.classList.remove('text-stone-400');
+                    tab.classList.add('text-white', 'bg-brand-red', 'shadow');
+                } else {
+                    tab.classList.remove('text-white', 'bg-brand-red', 'shadow');
+                    tab.classList.add('text-stone-400');
+                }
+            });
+
+            // Update content visibility
+            document.querySelectorAll('.step-content').forEach((content, index) => {
+                if (index + 1 === stepNum) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+
+            // Update bottom navigation state
+            document.getElementById('stepCounter').textContent = `ขั้นตอน ${stepNum} จาก ${totalSteps}`;
+            
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            if (stepNum === 1) {
+                prevBtn.classList.add('invisible');
+            } else {
+                prevBtn.classList.remove('invisible');
+            }
+
+            if (stepNum === totalSteps) {
+                nextBtn.innerHTML = 'เสร็จสิ้นขั้นตอน <i class="fa-solid fa-check ml-1"></i>';
+                nextBtn.classList.remove('bg-brand-gold');
+                nextBtn.classList.add('bg-emerald-500', 'text-white');
+            } else {
+                nextBtn.innerHTML = 'ขั้นตอนถัดไป <i class="fa-solid fa-chevron-right ml-1"></i>';
+                nextBtn.classList.remove('bg-emerald-500', 'text-white');
+                nextBtn.classList.add('bg-brand-gold', 'text-stone-950');
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                switchStep(currentStep + 1);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                switchStep(currentStep - 1);
+            }
+        }
+
+        // --- BAKING TIMER WIDGET LOGIC ---
+        let timerSeconds = 480; // 8 minutes default
+        let timerInterval = null;
+        let isTimerRunning = false;
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function toggleTimer() {
+            const btn = document.getElementById('timerBtn');
+            if (isTimerRunning) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                btn.innerHTML = '<i class="fa-solid fa-play mr-1"></i> เริ่มจับเวลาต่อ';
+                btn.classList.remove('bg-amber-600');
+                btn.classList.add('bg-brand-red');
+            } else {
+                isTimerRunning = true;
+                btn.innerHTML = '<i class="fa-solid fa-pause mr-1"></i> หยุดชั่วคราว';
+                btn.classList.remove('bg-brand-red');
+                btn.classList.add('bg-amber-600');
+
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        btn.innerHTML = '<i class="fa-solid fa-rotate mr-1"></i> อบเสร็จเรียบร้อย!';
+                        btn.classList.remove('bg-amber-600');
+                        btn.classList.add('bg-emerald-500');
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timerSeconds = 480;
+            updateTimerDisplay();
+            const btn = document.getElementById('timerBtn');
+            btn.innerHTML = '<i class="fa-solid fa-play mr-1"></i> เริ่มจับเวลา';
+            btn.classList.remove('bg-amber-600', 'bg-emerald-500');
+            btn.classList.add('bg-brand-red');
+        }
+
+        // Initialize Timer Display on Load
+        updateTimerDisplay();
+    </script>
+</body>
+</html>
